@@ -1,39 +1,27 @@
-<html>
-  <head>
-    <title>Credit Card Payment Test - Filed.com</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-  </head>
-  <body>
-    <div class="jumbotron">
-      <h1 class="display-4"><i class="fa fa-home"></i> Credit Card Payment</h1>
-      <p class="lead">An angular application demostrating NgRX and RxJS</p>
+<div class="jumbotron">
+  <h1 class="display-4"><i class="fa fa-home"></i> Credit Card Payment</h1>
+  <p class="lead">An angular application demostrating NgRX and RxJS</p>
+</div>
+<div class="col text-center mb-3">
+  <button (click)="navigate()" type="button" class="container__btn btn btn-info btn-lg">
+    <i class="fas fa-money-check-edit-alt"></i> Pay Now
+  </button>
+</div>
+<div class="container"> 
+  <div class="card mb-5">
+    <div class="card-body">
+      CC Store:
+      {{ creditCard$ | async | json }}
     </div>
-    <div class="col text-center mb-3">
-      <button (click)="navigate()" type="button" class="container__btn btn btn-info btn-lg">
-        <i class="fas fa-money-check-edit-alt"></i> Pay Now
-      </button>
-    </div>
-    <div class="container"> 
-      <div class="card mb-5">
-        <div class="card-body">
-          CC Store:
-          {{ creditCard$ | async | json }}
-        </div>
-      </div>
-      <toaster-container toaster-options="{'type': 'success', 'time-out': 5000, 'close-button':true, 'position-class':'toast-top-full-width'}"></toaster-container>
-      <div class="view-container">
-        <router-outlet></router-outlet>
-        <div ng-view></div>
-      </div>
-    </div>
-    <footer class="footer">
-      <div class="container text-center">
-        <span class="text-muted">Developed by <a href="https://www.linkedin.com/in/wasiukareemajibola/">Wasiu Kareem</a> with <i class="fas fa-heart text-danger"></i> for <a href="filed.com">Filed.com</a></span>
-      </div>
-    </footer>
-  </body>
-</html>
+  </div>
+  <toaster-container toaster-options="{'type': 'success', 'time-out': 5000, 'close-button':true, 'position-class':'toast-top-full-width'}"></toaster-container>
+  <div class="view-container">
+    <router-outlet></router-outlet>
+    <div ng-view></div>
+  </div>
+</div>
+<footer class="footer">
+  <div class="container text-center">
+    <span class="text-muted">Developed by <a href="https://www.linkedin.com/in/wasiukareemajibola/">Wasiu Kareem</a> with <i class="fas fa-heart text-danger"></i> for <a href="filed.com">Filed.com</a></span>
+  </div>
+</footer>
