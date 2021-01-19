@@ -1,0 +1,86 @@
+<div class="pay-box">
+  <h4 class="mb-4 lead"><i class="fa fa-credit-card"></i> Make Payment With Credit Card</h4>
+  <div *ngIf="submitted && paymentForm.invalid" class="alert alert-danger">{{errorMessage}}</div>
+  <form class="form-horizontal" role="form" [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="">Card Holder</span>
+      </div>
+      <input class="form-control" type="text" formControlName="ccHolder" placeholder="Name on card" [ngClass]="{ 'is-invalid': (formControls.ccHolder.dirty || formControls.ccHolder.touched) && formControls.ccHolder.errors }">
+      <div *ngIf="!formControls.ccHolder.valid && (formControls.ccHolder.dirty || formControls.ccHolder.touched)" class="invalid-feedback">
+        <div *ngIf="formControls.ccHolder.errors" class="alert alert-danger">Invalid Card holder Name.</div>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="">Credit Card Number</span>
+      </div>
+      <input class="form-control" type="text" formControlName="cardNumber" placeholder="" [ngClass]="{ 'is-invalid': formControls.cardNumber.errors  && (formControls.cardNumber.dirty || formControls.cardNumber.touched)}">
+      <div *ngIf="!formControls.cardNumber.valid && (formControls.cardNumber.dirty || formControls.cardNumber.touched)" class="invalid-feedback">
+        <div *ngIf="formControls.cardNumber.errors" class="alert alert-danger">Invalid Card Number.</div>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="">Expiration Date</span>
+      </div>
+      <select class="form-control" formControlName="expirationMonth" id="expiry-month" [ngClass]="{ 'is-invalid': !formControls.expirationMonth.valid && (formControls.expirationMonth.dirty || formControls.expirationMonth.touched) }">
+        <option disabled>Month</option>
+        <option value="01">Jan</option>
+        <option value="02">Feb</option>
+        <option value="03">Mar</option>
+        <option value="04">Apr</option>
+        <option value="05">May</option>
+        <option value="06">Jun</option>
+        <option value="07">Jul</option>
+        <option value="08">Aug</option>
+        <option value="09">Sep</option>
+        <option value="10">Oct</option>
+        <option value="11">Nov</option>
+        <option value="12">Dec</option>
+      </select>
+      <select class="form-control" formControlName="expirationYear" [ngClass]="{ 'is-invalid': formControls.expirationYear.errors && (formControls.expirationYear.dirty || formControls.expirationYear.touched) }" >
+        <option disabled>Year</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+      </select>
+      <div *ngIf="( !formControls.expirationMonth.valid && (formControls.expirationMonth.dirty || formControls.expirationMonth.touched) ) || ( !formControls.expirationYear.valid && (formControls.expirationYear.dirty || formControls.expirationYear.touched))" class="invalid-feedback">
+        <div *ngIf="formControls.expirationMonth.errors || formControls.expirationYear.errors" class="alert alert-danger">Invalid Date of Expiration.</div>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="">CVV</span>
+      </div>
+      <input class="form-control" formControlName="cardCVVNumber" placeholder="123" [ngClass]="{ 'is-invalid': formControls.cardCVVNumber.errors && (formControls.cardCVVNumber.dirty || formControls.cardCVVNumber.touched) }">
+      <div *ngIf="!formControls.cardCVVNumber.valid && (formControls.cardCVVNumber.dirty || formControls.cardCVVNumber.touched)" class="invalid-feedback">
+          <div *ngIf="formControls.cardCVVNumber.errors" class="alert alert-danger">Invalid CVV / CVC Number.</div>
+      </div>
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Amount</span>
+        <select class="form-control">
+          <option selected value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+          <option value="NGN">NGN</option>
+        </select>
+      </div>
+      <input class="form-control" type="text" formControlName="amount" [ngClass]="{ 'is-invalid': (formControls.amount.dirty || formControls.amount.touched) && formControls.amount.errors }" placeholder="Amount">
+      <div *ngIf="!formControls.amount.valid && (formControls.amount.dirty || formControls.amount.touched)" class="invalid-feedback">
+          <div *ngIf="formControls.amount.errors" class="alert alert-danger">Invalid Amount.</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-key"></i> Pay</button>
+    </div>
+  </form>
+</div>
