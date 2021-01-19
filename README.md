@@ -28,3 +28,4 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 make it look pretty.
 
 ## Demo
+https://peaceful-wright-ee09a7.netlify.app/
